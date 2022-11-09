@@ -192,41 +192,9 @@
                                             "type": "string",
                                             "example": "Camioneta Chevrolet"
                                         },
-                                        "description": {
+                                        "slug": {
                                             "type": "string",
-                                            "example": "Camioneta Chevrolet 2010"
-                                        },
-                                        "status": {
-                                            "type": "number",
-                                            "example": 1
-                                        },
-                                        "created_at": {
-                                            "type": "string",
-                                            "example": "2022-10-10 10:10:10.000000Z"
-                                        },
-                                        "updated_at": {
-                                            "type": "string",
-                                            "example": "2022-10-10 10:10:10.000000Z"
-                                        },
-                                        "categories": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "number",
-                                                        "example": 10
-                                                    },
-                                                    "name": {
-                                                        "type": "string",
-                                                        "example": "Vehiculo"
-                                                    },
-                                                    "slug": {
-                                                        "type": "string",
-                                                        "example": "vehiculo"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
+                                            "example": "camioneta-chevrolet-2010"
                                         }
                                     },
                                     "type": "object"

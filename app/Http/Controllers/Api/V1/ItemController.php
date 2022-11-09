@@ -133,15 +133,7 @@ class ItemController extends Controller
      *      @OA\JsonContent(
      *          @OA\Property(property="id", type="number", example=10),
      *          @OA\Property(property="name", type="string", example="Camioneta Chevrolet"),
-     *          @OA\Property(property="description", type="string", example="Camioneta Chevrolet 2010"),
-     *          @OA\Property(property="status", type="number", example=1),
-     *          @OA\Property(property="created_at", type="string", example="2022-10-10 10:10:10.000000Z"),
-     *          @OA\Property(property="updated_at", type="string", example="2022-10-10 10:10:10.000000Z"),
-     *          @OA\Property(property="categories", type="array", @OA\Items(
-     *              @OA\Property(property="id", type="number", example=10),
-     *              @OA\Property(property="name", type="string", example="Vehiculo"),
-     *              @OA\Property(property="slug", type="string", example="vehiculo"),
-     *          ), ),
+     *          @OA\Property(property="slug", type="string", example="camioneta-chevrolet-2010"),
      *      )
      *  ),
      *  @OA\Response(
