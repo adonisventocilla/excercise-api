@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->text('description');
-            $table->enum('status', [0,1]);
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

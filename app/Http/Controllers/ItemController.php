@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\item;
-use App\Http\Requests\StoreitemRequest;
-use App\Http\Requests\UpdateitemRequest;
+use App\Models\Item;
+use App\Http\Requests\StoreItemRequest;
+use App\Http\Requests\UpdateItemRequest;
+use App\Models\Category;
 
 class ItemController extends Controller
 {
@@ -31,18 +32,32 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreitemRequest  $request
+     * @param  \App\Http\Requests\StoreItemRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreitemRequest $request)
+    public function store(StoreItemRequest $request)
     {
-        //
+        //store category
+        $category = new Category();
+        $category->name = $request->category;
+
+        //store item from form
+        $item = new Item;
+        $item->name = $request->name;
+        $item->description = $request->description;
+        $item->status = null;
+        $item->category()->associate($category);
+        $item->save();
+
+        dd($item);
+
+        return view('welcome', compact('item'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\item  $item
+     * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
     public function show(item $item)
@@ -50,37 +65,4 @@ class ItemController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(item $item)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateitemRequest  $request
-     * @param  \App\Models\item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateitemRequest $request, item $item)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(item $item)
-    {
-        //
-    }
 }

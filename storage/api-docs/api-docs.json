@@ -1,0 +1,247 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Exercise API",
+        "description": "Exercise API for Delfosti",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://exercise-api.test/"
+        },
+        {
+            "url": "http://exercise-api.adonisventocilla.com/"
+        }
+    ],
+    "paths": {
+        "/api/v1/item?search={search}": {
+            "get": {
+                "tags": [
+                    "Items"
+                ],
+                "summary": "Search item by name",
+                "description": "Search items by name and return details with categories.",
+                "operationId": "04bf61ded9a1e277bbce4ce85ecf7fbb",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Parameter to search by name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Jaida"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View item's details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 10
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Camioneta Chevrolet"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Camioneta Chevrolet 2010"
+                                        },
+                                        "status": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2022-10-10 10:10:10.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2022-10-10 10:10:10.000000Z"
+                                        },
+                                        "categories": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 10
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Vehiculo"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "vehiculo"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error occurred."
+                    }
+                }
+            }
+        },
+        "/api/v1/items?qty={qty}": {
+            "get": {
+                "tags": [
+                    "Items"
+                ],
+                "summary": "List all items",
+                "description": "List all items by quantity",
+                "operationId": "9f5740316b4416cb27736be7da0c70cd",
+                "parameters": [
+                    {
+                        "name": "qty",
+                        "in": "path",
+                        "description": "Parameter to set the quantity of items to return",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View item's details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 10
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Camioneta Chevrolet"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Camioneta Chevrolet 2010"
+                                        },
+                                        "status": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2022-10-10 10:10:10.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2022-10-10 10:10:10.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error occurred."
+                    }
+                }
+            }
+        },
+        "/api/v1/category?search={search}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Search category by name",
+                "description": "Search categories by name and return details with categories.",
+                "operationId": "1cca901a8fb0d96c98c5e7e39279b595",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Parameter to search by name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Jaida"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View category's details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 10
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Camioneta Chevrolet"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Camioneta Chevrolet 2010"
+                                        },
+                                        "status": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2022-10-10 10:10:10.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2022-10-10 10:10:10.000000Z"
+                                        },
+                                        "categories": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 10
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Vehiculo"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "vehiculo"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error occurred."
+                    }
+                }
+            }
+        }
+    }
+}
