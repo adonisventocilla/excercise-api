@@ -28,12 +28,8 @@
             </div>
             <div class="mb-3">
                 <label for="category" class="form-label">Item category</label>
-                {{-- <select id="category" name="category[]" class="mb-3 form-control" aria-describedby="categoryHelp"
-                    aria-label="Default select example" multiple="multiple">
-                    <option selected>Open this select menu</option>
-                </select> --}}
                 <input type="text" class="form-control" id="category" name="category" aria-describedby="categoryHelp">
-                <div id="categoryHelp" class="form-text">Select categories for assign.</div>
+                <div id="categoryHelp" class="form-text">Put categories for assign separate by comma.</div>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>

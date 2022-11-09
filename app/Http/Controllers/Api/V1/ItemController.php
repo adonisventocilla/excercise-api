@@ -16,7 +16,6 @@ use App\Models\Category;
  *  description="Exercise API for Delfosti"
  * ),
  * @OA\Server(url="http://exercise-api.test/"),
- * @OA\Server(url="http://exercise-api.adonisventocilla.com/")
  */
 
 class ItemController extends Controller
@@ -114,51 +113,51 @@ class ItemController extends Controller
         return response()->json($item);
     }
 
-    // /**
-    //  * @OA\Get(
-    //  *  path="/api/v1/category?search={search}",
-    //  *  tags={"Category"},
-    //  *  summary="Search category by name",
-    //  *  description="Search categories by name and return details with categories.",
-    //  *  @OA\Parameter(
-    //  *      description="Parameter to search by name",
-    //  *      in="path",
-    //  *      name="search",
-    //  *      required=true,
-    //  *      @OA\Schema(type="string"),
-    //  *      example="Jaida",
-    //  *  ),
-    //  *  @OA\Response(
-    //  *      response=200,
-    //  *      description="View category's details",
-    //  *      @OA\JsonContent(
-    //  *          @OA\Property(property="id", type="number", example=10),
-    //  *          @OA\Property(property="name", type="string", example="Camioneta Chevrolet"),
-    //  *          @OA\Property(property="description", type="string", example="Camioneta Chevrolet 2010"),
-    //  *          @OA\Property(property="status", type="number", example=1),
-    //  *          @OA\Property(property="created_at", type="string", example="2022-10-10 10:10:10.000000Z"),
-    //  *          @OA\Property(property="updated_at", type="string", example="2022-10-10 10:10:10.000000Z"),
-    //  *          @OA\Property(property="categories", type="array", @OA\Items(
-    //  *              @OA\Property(property="id", type="number", example=10),
-    //  *              @OA\Property(property="name", type="string", example="Vehiculo"),
-    //  *              @OA\Property(property="slug", type="string", example="vehiculo"),
-    //  *          ), ),
-    //  *      )
-    //  *  ),
-    //  *  @OA\Response(
-    //  *      response="default",
-    //  *      description="An unexpected error occurred.",
-    //  *  )
-    //  * )
-    //  */
+    /**
+     * @OA\Get(
+     *  path="/api/v1/category?search={search}",
+     *  tags={"Category"},
+     *  summary="Search category by name",
+     *  description="Search categories by name and return details with categories.",
+     *  @OA\Parameter(
+     *      description="Parameter to search by name",
+     *      in="path",
+     *      name="search",
+     *      required=true,
+     *      @OA\Schema(type="string"),
+     *      example="Petro",
+     *  ),
+     *  @OA\Response(
+     *      response=200,
+     *      description="View category's details",
+     *      @OA\JsonContent(
+     *          @OA\Property(property="id", type="number", example=10),
+     *          @OA\Property(property="name", type="string", example="Camioneta Chevrolet"),
+     *          @OA\Property(property="description", type="string", example="Camioneta Chevrolet 2010"),
+     *          @OA\Property(property="status", type="number", example=1),
+     *          @OA\Property(property="created_at", type="string", example="2022-10-10 10:10:10.000000Z"),
+     *          @OA\Property(property="updated_at", type="string", example="2022-10-10 10:10:10.000000Z"),
+     *          @OA\Property(property="categories", type="array", @OA\Items(
+     *              @OA\Property(property="id", type="number", example=10),
+     *              @OA\Property(property="name", type="string", example="Vehiculo"),
+     *              @OA\Property(property="slug", type="string", example="vehiculo"),
+     *          ), ),
+     *      )
+     *  ),
+     *  @OA\Response(
+     *      response="default",
+     *      description="An unexpected error occurred.",
+     *  )
+     * )
+     */
     
-    // public function searchCategory(Request $request)
-    // {
-    //     $search = $request->input('search');
-    //     $item = CategoryResource::collection(
-    //         Category::where('name', 'like',"%".$search."%")
-    //         ->get()->toArray()
-    //     );
-    //     return response()->json($item);
-    // }
+    public function searchCategory(Request $request)
+    {
+        $search = $request->input('search');
+        $item = CategoryResource::collection(
+            Category::where('name', 'like',"%".$search."%")
+            ->get()
+        );
+        return response()->json($item);
+    }
 }

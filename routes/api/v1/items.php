@@ -18,5 +18,5 @@ use App\Http\Controllers\Api\V1\ItemController;
 Route::prefix('v1')->group(function () {
     Route::get('items', [ItemController::class, 'items']);
     Route::get('item', [ItemController::class, 'search']);
-    Route::post('category', [ItemController::class, 'searchCategory'])->name('category.search');
+    Route::get('category', [ItemController::class, 'searchCategory'])->name('category.search');
 });
