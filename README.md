@@ -31,20 +31,20 @@
 UPDATE
 
 8. Se actualizó la columna `items` por `articles`, para aplicar los cambios realizar:
-```sh
-    //verificar si están todas las migraciones
-    php artisan migrate:status
-    //realizar la actualización
-    php artisan migrate
-```
+    ```sh
+        //verificar si están todas las migraciones
+        php artisan migrate:status
+        //realizar la actualización
+        php artisan migrate
+    ```
 9. Si se muestra el siguiente error al ejecutar la migración:
 > Class 'Doctrine\DBAL\Driver\AbstractPostgreSQLDriver' not found
 
 Se debe ejecutar los siguientes comando:
-```sh
-    //reinstalar el paquete de pgsql
-    composer remove doctrine/dbal
-    composer require doctrine/dbal
-    //realizar la migración
-    php artisan migrate
-```
+    ```sh
+        //reinstalar el paquete de pgsql
+        composer remove doctrine/dbal
+        composer require doctrine/dbal
+        //realizar la migración
+        php artisan migrate
+    ```

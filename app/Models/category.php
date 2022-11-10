@@ -21,33 +21,21 @@ class Category extends Model
     }
 
     /**
-     * add mutator for name
-     * set slug attribute from name
-     * set slug attribute when is duplicated
-     *
-     * @param $value
-     */
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = $value;
-
-        $slug = Str::slug($value);
-        $count = 1;
-        while (Category::where('slug', $slug)->exists()) {
-            $slug = Str::slug($value) . '-' . $count;
-            $count++;
-        }
-
-        $this->attributes['slug'] = $slug;
-    }
-
-    /**
      * add mutator for slug
      *
      * @param $value
      */
     public function setSlugAttribute($value)
     {
-        $this->attributes['slug'] = $value;
+        $slug = $value ?? $this->name;
+        $slug = Str::slug($slug);
+        
+        $count = 1;
+        while (Category::where('slug', $slug)->exists()) {
+            $slug = $slug . '-' . $count;
+            $count++;
+        }
+
+        $this->attributes['slug'] = $slug;
     }
 }
