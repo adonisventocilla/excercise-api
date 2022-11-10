@@ -15,9 +15,9 @@ class Category extends Model
         'slug',
     ];
 
-    public function items()
+    public function articles()
     {
-        return $this->belongsToMany(Item::class);
+        return $this->belongsToMany(Article::class);
     }
 
     /**

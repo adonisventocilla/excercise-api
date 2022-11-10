@@ -5,35 +5,31 @@
         "description": "Exercise API for Delfosti",
         "version": "1.0"
     },
-    "servers": [
-        {
-            "url": "http://exercise-api.test/"
-        }
-    ],
+    "servers": [{
+        "url": "http://exercise-api.test/"
+    }],
     "paths": {
-        "/api/v1/item?search={search}": {
+        "/api/v1/article?search={search}": {
             "get": {
                 "tags": [
-                    "Items"
+                    "Articles"
                 ],
-                "summary": "Search item by name",
-                "description": "Search items by name and return details with categories.",
+                "summary": "Search article by name",
+                "description": "Search articles by name and return details with categories.",
                 "operationId": "04bf61ded9a1e277bbce4ce85ecf7fbb",
-                "parameters": [
-                    {
-                        "name": "search",
-                        "in": "path",
-                        "description": "Parameter to search by name",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "Jaida"
-                    }
-                ],
+                "parameters": [{
+                    "name": "search",
+                    "in": "path",
+                    "description": "Parameter to search by name",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "Jaida"
+                }],
                 "responses": {
                     "200": {
-                        "description": "View item's details",
+                        "description": "View article's details",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -64,7 +60,7 @@
                                         },
                                         "categories": {
                                             "type": "array",
-                                            "items": {
+                                            "articles": {
                                                 "properties": {
                                                     "id": {
                                                         "type": "number",
@@ -94,29 +90,27 @@
                 }
             }
         },
-        "/api/v1/items?qty={qty}": {
+        "/api/v1/articles?qty={qty}": {
             "get": {
                 "tags": [
-                    "Items"
+                    "Articles"
                 ],
-                "summary": "List all items",
-                "description": "List all items by quantity",
+                "summary": "List all articles",
+                "description": "List all articles by quantity",
                 "operationId": "9f5740316b4416cb27736be7da0c70cd",
-                "parameters": [
-                    {
-                        "name": "qty",
-                        "in": "path",
-                        "description": "Parameter to set the quantity of items to return",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 10
-                    }
-                ],
+                "parameters": [{
+                    "name": "qty",
+                    "in": "path",
+                    "description": "Parameter to set the quantity of articles to return",
+                    "required": false,
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": 10
+                }],
                 "responses": {
                     "200": {
-                        "description": "View item's details",
+                        "description": "View article's details",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -165,18 +159,16 @@
                 "summary": "Search category by name",
                 "description": "Search categories by name and return details with categories.",
                 "operationId": "1cca901a8fb0d96c98c5e7e39279b595",
-                "parameters": [
-                    {
-                        "name": "search",
-                        "in": "path",
-                        "description": "Parameter to search by name",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "Petro"
-                    }
-                ],
+                "parameters": [{
+                    "name": "search",
+                    "in": "path",
+                    "description": "Parameter to search by name",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "Petro"
+                }],
                 "responses": {
                     "200": {
                         "description": "View category's details",

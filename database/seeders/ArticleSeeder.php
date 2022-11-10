@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Item;
+use App\Models\Article;
 use App\Models\Category;
 
-class ItemSeeder extends Seeder
+class ArticleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,8 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        Item::factory()->count(10)->create()->each(function ($item) {
-            $item->categories()->attach(
+        Article::factory()->count(10)->create()->each(function ($article) {
+            $article->categories()->attach(
                 Category::inRandomOrder()->limit(rand(1, 3))->get()
             );
         });

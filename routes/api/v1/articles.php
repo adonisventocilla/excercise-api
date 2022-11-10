@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\V1\ItemController;
+use App\Http\Controllers\Api\V1\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ use App\Http\Controllers\Api\V1\ItemController;
 */
 
 Route::prefix('v1')->group(function () {
-    Route::get('items', [ItemController::class, 'items']);
-    Route::get('item', [ItemController::class, 'search']);
-    Route::get('category', [ItemController::class, 'searchCategory'])->name('category.search');
+    Route::get('articles', [ArticleController::class, 'articles']);
+    Route::get('article', [ArticleController::class, 'search']);
+    Route::get('category', [ArticleController::class, 'searchCategory'])->name('category.search');
 });

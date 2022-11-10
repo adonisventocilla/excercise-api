@@ -10,24 +10,24 @@
 
 <div class="card m-3">
     <div class="card-title text-center my-4">
-        <h3>Item's</h1>
+        <h3>Article's</h1>
     </div>
     <div class="card-body">
         <form method="POST" action="{{route('save')}}">
             @csrf
             <div class="mb-3">
-                <label for="name" class="form-label">Item name</label>
+                <label for="name" class="form-label">Article name</label>
                 <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp">
                 <div id="nameHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label">Item description</label>
+                <label for="name" class="form-label">Article description</label>
                 <textarea id="description" name="description" class="form-control" aria-describedby="descriptionHelp"
                     aria-label="With textarea" maxlength="50"></textarea>
                 <div id="descriptionHelp" class="form-text">Fill the description.</div>
             </div>
             <div class="mb-3">
-                <label for="category" class="form-label">Item category</label>
+                <label for="category" class="form-label">Article category</label>
                 <input type="text" class="form-control" id="category" name="category" aria-describedby="categoryHelp">
                 <div id="categoryHelp" class="form-text">Put categories for assign separate by comma.</div>
             </div>
@@ -56,10 +56,10 @@
             },
             processResults: function(data) {
                 return {
-                    results: $.map(data, function(item) {
+                    results: $.map(data, function(article) {
                         return {
-                            text: item.name,
-                            id: item.id
+                            text: article.name,
+                            id: article.id
                         }
                     })
                 };

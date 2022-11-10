@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Item;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,22 +12,22 @@ class HomeController extends Controller
     {
         return view('welcome');
     }
-    
+
     public function store(Request $request)
     {
-        //store item from form
-        $item = new Item();
-        $item->name = $request->name;
-        $item->description = $request->description;
-        $item->status = null;
-        $item->categories(
-            collect(explode(',', $request->category))->map(function ($category) {
-                return ['name' => $category];
-            })
-        );
-        dd($request->category, $item->categories());
-        $item->save();
+        //store article from form
+        $article = new Article();
+        $article->name = $request->name;
+        $article->description = $request->description;
+        $article->status = null;
+        $article->categories(
+            //insertar el name de la categoria según $request->category separado por coma
 
-        back()->withSuccess('Item added success!');
+
+        );
+        dd($request->category, $article->categories());
+        $article->save();
+
+        back()->withSuccess('Article added success!');
     }
 }

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Item;
-use App\Http\Requests\StoreItemRequest;
-use App\Http\Requests\UpdateItemRequest;
+use App\Models\Article;
+use Illuminate\Http\Request;
 use App\Models\Category;
 
-class ItemController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,35 +31,35 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreItemRequest  $request
+     * @param  \App\Http\Requests\StoreArticleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreItemRequest $request)
+    public function store(Request $request)
     {
         //store category
         $category = new Category();
         $category->name = $request->category;
 
-        //store item from form
-        $item = new Item;
-        $item->name = $request->name;
-        $item->description = $request->description;
-        $item->status = null;
-        $item->category()->associate($category);
-        $item->save();
+        //store article from form
+        $article = new Article;
+        $article->name = $request->name;
+        $article->description = $request->description;
+        $article->status = null;
+        $article->category()->associate($category);
+        $article->save();
 
-        dd($item);
+        dd($article);
 
-        return view('welcome', compact('item'));
+        return view('welcome', compact('article'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Item  $item
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(item $item)
+    public function show(article $article)
     {
         //
     }
