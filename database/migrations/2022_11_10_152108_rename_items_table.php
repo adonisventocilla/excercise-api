@@ -16,9 +16,9 @@ class RenameItemsTable extends Migration
         //rename items table to articles
         Schema::rename('items', 'articles');
 
-        //rename category_item table to category_article with foreign keys
-        Schema::rename('category_item', 'category_article');
-        Schema::table('category_article', function (Blueprint $table) {
+        //rename category_item table to article_category
+        Schema::rename('category_item', 'article_category');
+        Schema::table('article_category', function (Blueprint $table) {
             $table->renameColumn('item_id', 'article_id');
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
         });
@@ -32,6 +32,6 @@ class RenameItemsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('articles');
-        Schema::dropIfExists('category_article');
+        Schema::dropIfExists('article_category');
     }
 }

@@ -13,7 +13,7 @@
         <h3>Article's</h1>
     </div>
     <div class="card-body">
-        <form method="POST" action="{{route('save')}}">
+        <form method="POST" action="{{route('article.save')}}">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Article name</label>

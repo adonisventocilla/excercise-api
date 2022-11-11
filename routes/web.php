@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +17,5 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [HomeController::class, 'index']);
 //save data form
-Route::post('/save', [HomeController::class, 'store'])->name('save');
+Route::post('/save', [ArticleController::class, 'store'])->name('article.save');
 

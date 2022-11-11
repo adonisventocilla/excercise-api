@@ -36,17 +36,13 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //store category
-        $category = new Category();
-        $category->name = $request->category;
 
         //store article from form
-        $article = new Article;
-        $article->name = $request->name;
-        $article->description = $request->description;
-        $article->status = null;
-        $article->category()->associate($category);
-        $article->save();
+        $article = Article::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'categories' => $request->category,
+        ]);
 
         dd($article);
 
