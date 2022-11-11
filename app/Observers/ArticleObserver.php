@@ -16,9 +16,9 @@ class ArticleObserver
      */
     public function creating(Article $article)
     {
-        $article->categories()->sync($article->categories->map(function ($category) {
-            return $category->id ?? Category::firstOrCreate(['name' => $category->name])->id;
-        }));
+        if (!$article->status) {
+            $article->status = null;
+        }
     }
 
     /**
@@ -30,9 +30,16 @@ class ArticleObserver
      */
     public function updating(Article $article)
     {
-        $article->categories()->sync($article->categories->map(function ($category) {
-            return $category->id ?? Category::firstOrCreate(['name' => $category->name])->id;
-        }));
-    }
+        //crear array de categorias
+        $categories = explode(',', $article->categories);
 
+        //eliminar atributo categories
+        unset($article->categories);
+
+        //recorrer array de categorias
+        foreach ($categories as $category) {
+            $category = Category::firstOrCreate(['name' => $category]);
+            $article->categories()->attach($category->id);
+        }
+    }
 }

@@ -15,7 +15,7 @@ use App\Models\Category;
  *  version="1.0",
  *  description="Exercise API for Delfosti"
  * ),
- * @OA\Server(url="http://exercise-api.test/"),
+ * @OA\Server(url="http://exercise-api.test/")
  */
 
 class ArticleController extends Controller
@@ -42,9 +42,9 @@ class ArticleController extends Controller
      *          @OA\Property(property="name", type="string", example="Camioneta Chevrolet"),
      *          @OA\Property(property="description", type="string", example="Camioneta Chevrolet 2010"),
      *          @OA\Property(property="status", type="number", example=1),
-     *          @OA\Property(property="created_at", type="string", example="2022-10-10 10:10:10.000000Z"),
-     *          @OA\Property(property="updated_at", type="string", example="2022-10-10 10:10:10.000000Z"),
-     *          @OA\Property(property="categories", type="array", @OA\Articles(
+     *          @OA\Property(property="created_at", type="string", example="2022-10-10 10:10:10"),
+     *          @OA\Property(property="updated_at", type="string", example="2022-10-10 10:10:10"),
+     *          @OA\Property(property="categories", type="array", @OA\Items(
      *              @OA\Property(property="id", type="number", example=10),
      *              @OA\Property(property="name", type="string", example="Vehiculo"),
      *              @OA\Property(property="slug", type="string", example="vehiculo"),
@@ -72,6 +72,55 @@ class ArticleController extends Controller
 
     /**
      * @OA\Get(
+     *  path="/api/v1/article/id?id={id}",
+     *  tags={"Articles"},
+     *  summary="Search article by id",
+     *  description="Search articles by id and return details with categories.",
+     *  @OA\Parameter(
+     *      description="Parameter to search by id",
+     *      in="path",
+     *      name="id",
+     *      required=true,
+     *      @OA\Schema(type="integer"),
+     *      example=10,
+     *  ),
+     *  @OA\Response(
+     *      response=200,
+     *      description="View article's details",
+     *      @OA\JsonContent(
+     *          @OA\Property(property="id", type="number", example=10),
+     *          @OA\Property(property="name", type="string", example="Camioneta Chevrolet"),
+     *          @OA\Property(property="description", type="string", example="Camioneta Chevrolet 2010"),
+     *          @OA\Property(property="status", type="number", example=1),
+     *          @OA\Property(property="created_at", type="datetime", example="2022-10-10 10:10:10"),
+     *          @OA\Property(property="updated_at", type="datetime", example="2022-10-10 10:10:10"),
+     *          @OA\Property(property="categories", type="array", @OA\Items(
+     *              @OA\Property(property="id", type="number", example=10),
+     *              @OA\Property(property="name", type="string", example="Vehiculo"),
+     *              @OA\Property(property="slug", type="string", example="vehiculo"),
+     *          ), ),
+     *      )
+     *  ),
+     *  @OA\Response(
+     *      response="default",
+     *      description="An unexpected error occurred.",
+     *  ),
+     * )
+     */
+
+    public function searchById(Request $request)
+    {
+        $search = $request->input('id');
+        $article = ArticleResource::collection(
+            Article::where('id', $search)
+            ->with('categories')->has("categories")
+            ->get()
+        );
+        return response()->json($article);
+    }
+    
+    /**
+     * @OA\Get(
      *  path="/api/v1/articles?qty={qty}",
      *  tags={"Articles"},
      *  summary="List all articles",
@@ -92,8 +141,8 @@ class ArticleController extends Controller
      *          @OA\Property(property="name", type="string", example="Camioneta Chevrolet"),
      *          @OA\Property(property="description", type="string", example="Camioneta Chevrolet 2010"),
      *          @OA\Property(property="status", type="number", example=1),
-     *          @OA\Property(property="created_at", type="string", example="2022-10-10 10:10:10.000000Z"),
-     *          @OA\Property(property="updated_at", type="string", example="2022-10-10 10:10:10.000000Z"),
+     *          @OA\Property(property="created_at", type="string", example="2022-10-10 10:10:10"),
+     *          @OA\Property(property="updated_at", type="string", example="2022-10-10 10:10:10"),
      *      )
      *  ),
      *  @OA\Response(
@@ -133,7 +182,15 @@ class ArticleController extends Controller
      *      @OA\JsonContent(
      *          @OA\Property(property="id", type="number", example=10),
      *          @OA\Property(property="name", type="string", example="Camioneta Chevrolet"),
-     *          @OA\Property(property="slug", type="string", example="camioneta-chevrolet-2010"),
+     *          @OA\Property(property="description", type="string", example="Camioneta Chevrolet 2010"),
+     *          @OA\Property(property="status", type="number", example=1),
+     *          @OA\Property(property="created_at", type="string", example="2022-10-10 10:10:10"),
+     *          @OA\Property(property="updated_at", type="string", example="2022-10-10 10:10:10"),
+     *          @OA\Property(property="categories", type="array", @OA\Items(
+     *              @OA\Property(property="id", type="number", example=10),
+     *              @OA\Property(property="name", type="string", example="Vehiculo"),
+     *              @OA\Property(property="slug", type="string", example="vehiculo"),
+     *          ), ),
      *      )
      *  ),
      *  @OA\Response(

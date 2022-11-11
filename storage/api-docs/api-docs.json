@@ -5,9 +5,11 @@
         "description": "Exercise API for Delfosti",
         "version": "1.0"
     },
-    "servers": [{
-        "url": "http://exercise-api.test/"
-    }],
+    "servers": [
+        {
+            "url": "http://exercise-api.test/"
+        }
+    ],
     "paths": {
         "/api/v1/article?search={search}": {
             "get": {
@@ -16,17 +18,19 @@
                 ],
                 "summary": "Search article by name",
                 "description": "Search articles by name and return details with categories.",
-                "operationId": "04bf61ded9a1e277bbce4ce85ecf7fbb",
-                "parameters": [{
-                    "name": "search",
-                    "in": "path",
-                    "description": "Parameter to search by name",
-                    "required": true,
-                    "schema": {
-                        "type": "string"
-                    },
-                    "example": "Jaida"
-                }],
+                "operationId": "45c43e8b937bb1cbf1430784883f32ca",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Parameter to search by name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Jaida"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "View article's details",
@@ -52,15 +56,100 @@
                                         },
                                         "created_at": {
                                             "type": "string",
-                                            "example": "2022-10-10 10:10:10.000000Z"
+                                            "example": "2022-10-10 10:10:10"
                                         },
                                         "updated_at": {
                                             "type": "string",
-                                            "example": "2022-10-10 10:10:10.000000Z"
+                                            "example": "2022-10-10 10:10:10"
                                         },
                                         "categories": {
                                             "type": "array",
-                                            "articles": {
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 10
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Vehiculo"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "vehiculo"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error occurred."
+                    }
+                }
+            }
+        },
+        "/api/v1/article/id?id={id}": {
+            "get": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Search article by id",
+                "description": "Search articles by id and return details with categories.",
+                "operationId": "16197da30d4cab8e17872464c1412f99",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter to search by id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View article's details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 10
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Camioneta Chevrolet"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Camioneta Chevrolet 2010"
+                                        },
+                                        "status": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2022-10-10 10:10:10"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2022-10-10 10:10:10"
+                                        },
+                                        "categories": {
+                                            "type": "array",
+                                            "items": {
                                                 "properties": {
                                                     "id": {
                                                         "type": "number",
@@ -97,17 +186,19 @@
                 ],
                 "summary": "List all articles",
                 "description": "List all articles by quantity",
-                "operationId": "9f5740316b4416cb27736be7da0c70cd",
-                "parameters": [{
-                    "name": "qty",
-                    "in": "path",
-                    "description": "Parameter to set the quantity of articles to return",
-                    "required": false,
-                    "schema": {
-                        "type": "integer"
-                    },
-                    "example": 10
-                }],
+                "operationId": "a6aad868bd948b1ca81e339ab97cb8fa",
+                "parameters": [
+                    {
+                        "name": "qty",
+                        "in": "path",
+                        "description": "Parameter to set the quantity of articles to return",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "View article's details",
@@ -133,11 +224,11 @@
                                         },
                                         "created_at": {
                                             "type": "string",
-                                            "example": "2022-10-10 10:10:10.000000Z"
+                                            "example": "2022-10-10 10:10:10"
                                         },
                                         "updated_at": {
                                             "type": "string",
-                                            "example": "2022-10-10 10:10:10.000000Z"
+                                            "example": "2022-10-10 10:10:10"
                                         }
                                     },
                                     "type": "object"
@@ -158,17 +249,19 @@
                 ],
                 "summary": "Search category by name",
                 "description": "Search categories by name and return details with categories.",
-                "operationId": "1cca901a8fb0d96c98c5e7e39279b595",
-                "parameters": [{
-                    "name": "search",
-                    "in": "path",
-                    "description": "Parameter to search by name",
-                    "required": true,
-                    "schema": {
-                        "type": "string"
-                    },
-                    "example": "Petro"
-                }],
+                "operationId": "95b2302bf09d3cfae3189f68ed1bb8a8",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Parameter to search by name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Petro"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "View category's details",
@@ -184,9 +277,41 @@
                                             "type": "string",
                                             "example": "Camioneta Chevrolet"
                                         },
-                                        "slug": {
+                                        "description": {
                                             "type": "string",
-                                            "example": "camioneta-chevrolet-2010"
+                                            "example": "Camioneta Chevrolet 2010"
+                                        },
+                                        "status": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2022-10-10 10:10:10"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2022-10-10 10:10:10"
+                                        },
+                                        "categories": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 10
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Vehiculo"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "vehiculo"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
                                         }
                                     },
                                     "type": "object"

@@ -15,7 +15,7 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 //save data form
 Route::post('/save', [ArticleController::class, 'store'])->name('article.save');
 

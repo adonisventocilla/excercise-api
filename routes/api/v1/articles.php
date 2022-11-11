@@ -18,5 +18,7 @@ use App\Http\Controllers\Api\V1\ArticleController;
 Route::prefix('v1')->group(function () {
     Route::get('articles', [ArticleController::class, 'articles']);
     Route::get('article', [ArticleController::class, 'search']);
+    Route::get('article/id', [ArticleController::class, 'searchById']);
+    
     Route::get('category', [ArticleController::class, 'searchCategory'])->name('category.search');
 });

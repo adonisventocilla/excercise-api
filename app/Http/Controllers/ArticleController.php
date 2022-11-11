@@ -8,25 +8,6 @@ use App\Models\Category;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,28 +17,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        //crear y guardar el articulo
+        $article = new Article();
+        $article->name = $request->name;
+        $article->description = $request->description;
+        $article->save();
 
-        //store article from form
-        $article = Article::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'categories' => $request->category,
-        ]);
-
-        dd($article);
-
-        return view('welcome', compact('article'));
+        //creado el articulo, pasar las categorias separados por coma y actualizar.
+        $article->categories = $request->category;
+        $article->save();
+        //return with session message
+        return redirect()->route('home.index')->with('success', 'Article created successfully by ID: ' . $article->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function show(article $article)
-    {
-        //
-    }
 
 }

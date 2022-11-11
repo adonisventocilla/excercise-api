@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><b>API's</b></a>
+                <a class="navbar-brand" href="#"><b>Exercises</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +23,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-article">
-                            <a class="nav-link active" aria-current="page" href="#">CRUD Articles</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('l5-swagger.default.api')}}" target="_blank">API's Resources</a>
                         </li>
                         <li class="nav-article">
-                            <a class="nav-link active" aria-current="page" href="#">View Categories</a>
+                            <a class="nav-link active" aria-current="page" href="#">CRUD Articles</a>
                         </li>
                     </ul>
                 </div>
