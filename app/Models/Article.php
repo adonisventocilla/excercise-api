@@ -16,6 +16,10 @@ class Article extends Model
         'status',
     ];
 
+    protected $attributes = [
+        'status' => null,
+    ];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);

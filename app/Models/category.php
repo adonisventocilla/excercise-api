@@ -15,6 +15,10 @@ class Category extends Model
         'slug',
     ];
 
+    protected $attributes = [
+        'slug' => null,
+    ];
+
     public function articles()
     {
         return $this->belongsToMany(Article::class);
