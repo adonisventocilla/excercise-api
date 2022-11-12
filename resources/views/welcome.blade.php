@@ -22,7 +22,7 @@
                     @endif
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('article.save')}}">
+                    <form method="POST" action="{{route('article.store')}}">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Article name</label>
